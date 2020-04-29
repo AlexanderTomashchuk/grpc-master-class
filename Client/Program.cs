@@ -1,4 +1,4 @@
-﻿using Greet;
+﻿using Calculator;
 using Grpc.Core;
 using System;
 using System.Threading.Tasks;
@@ -24,16 +24,31 @@ namespace Client
             Console.WriteLine("Press any key to send the request to the server...");
             Console.ReadKey();
 
-            var client = new GreetingService.GreetingServiceClient(channel);
+            // unary request
+            //var client = new GreetingService.GreetingServiceClient(channel);
 
-            var greeting = new Greeting
+            //var greeting = new Greeting
+            //{
+            //    FirstName = "Tom",
+            //    LastName = "Jones"
+            //};
+
+            //var request = new GreetingRequest { Greeting = greeting };
+            //var response = client.GreetAsync(request).GetAwaiter().GetResult();
+
+            //Console.WriteLine(response.Result);
+
+            // unary request (exercise)
+
+            var client = new CalculatorService.CalculatorServiceClient(channel);
+
+            var request = new SumRequest
             {
-                FirstName = "Tom",
-                LastName = "Jones"
+                A = 10,
+                B = -1
             };
 
-            var request = new GreetingRequest { Greeting = greeting };
-            var response = client.GreetAsync(request).GetAwaiter().GetResult();
+            var response = client.SumAsync(request).GetAwaiter().GetResult();
 
             Console.WriteLine(response.Result);
 
