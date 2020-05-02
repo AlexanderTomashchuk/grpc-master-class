@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package calculator;
+
+message ComputeAverageRequest { sint32 number = 1; }
+
+message ComputeAverageResponse { double result = 1; }
+
+service CalculatorService {
+  rpc ComputeAverage(stream ComputeAverageRequest)
+      returns (ComputeAverageResponse) {};
+}
