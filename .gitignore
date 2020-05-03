@@ -350,8 +350,10 @@ MigrationBackup/
 .ionide/
 
 # Idea
-
 **/.idea/*
+
+# VSCode
+**/.vscode/*
 
 # SSL certificates
 **/ssl/*
